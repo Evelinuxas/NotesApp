@@ -8,7 +8,6 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.FileOutputStream;
-import android.util.Log;
 
 public class AddNoteActivity extends AppCompatActivity {
 
@@ -23,8 +22,7 @@ public class AddNoteActivity extends AppCompatActivity {
         editTextContent = findViewById(R.id.editTextContent);
         Button buttonSave = findViewById(R.id.buttonSave);
 
-        buttonSave.setOnClickListener(v -> saveNote());  // Naudojame lambda išraišką vietoj anoniminio klasės objekto
-
+        buttonSave.setOnClickListener(v -> saveNote());
     }
 
     private void saveNote() {
@@ -43,7 +41,7 @@ public class AddNoteActivity extends AppCompatActivity {
             Toast.makeText(this, "Note saved", Toast.LENGTH_SHORT).show();
             finish();
         } catch (Exception e) {
-            Log.e("AddNoteActivity", "Error saving note", e);  // Naudojame Log.e() klaidoms registruoti
+            Toast.makeText(this, "Error saving note", Toast.LENGTH_SHORT).show();
         }
     }
 }

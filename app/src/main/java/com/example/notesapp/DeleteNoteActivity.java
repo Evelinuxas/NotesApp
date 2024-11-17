@@ -8,12 +8,11 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import android.util.Log;
 
 public class DeleteNoteActivity extends AppCompatActivity {
 
@@ -35,8 +34,7 @@ public class DeleteNoteActivity extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerNotes.setAdapter(adapter);
 
-        buttonDelete.setOnClickListener(v -> deleteNote());  // Naudojame lambda išraišką vietoj anoniminio klaidos objekto
-
+        buttonDelete.setOnClickListener(v -> deleteNote());
     }
 
     private void loadNotes() {
@@ -49,13 +47,12 @@ public class DeleteNoteActivity extends AppCompatActivity {
             }
             reader.close();
         } catch (Exception e) {
-            Log.e("DeleteNoteActivity", "Error loading note", e);
-            Toast.makeText(this, "Error loading notes", Toast.LENGTH_SHORT).show();  // Pranešimas apie klaidą
+            Toast.makeText(this, "Error loading notes", Toast.LENGTH_SHORT).show();
         }
     }
 
     private void deleteNote() {
-        String selectedNote = spinnerNotes.getSelectedItem().toString();
+        String selectedNote = (String) spinnerNotes.getSelectedItem();
         notesList.remove(selectedNote);
 
         try {
@@ -67,7 +64,8 @@ public class DeleteNoteActivity extends AppCompatActivity {
             Toast.makeText(this, "Note deleted", Toast.LENGTH_SHORT).show();
             finish();
         } catch (Exception e) {
-            Log.e("DeleteNoteActivity", "Error deleting note", e);  // Naudojame Log.e() klaidoms registruoti
+            Toast.makeText(this, "Error deleting note", Toast.LENGTH_SHORT).show();
         }
     }
 }
+
