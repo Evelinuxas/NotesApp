@@ -49,7 +49,8 @@ public class DeleteNoteActivity extends AppCompatActivity {
             }
             reader.close();
         } catch (Exception e) {
-            Log.e("LoadNoteActivity", "Error loading note", e);  // Naudojame Log.e() klaidoms registruoti
+            Log.e("DeleteNoteActivity", "Error loading note", e);
+            Toast.makeText(this, "Error loading notes", Toast.LENGTH_SHORT).show();  // Pranešimas apie klaidą
         }
     }
 
