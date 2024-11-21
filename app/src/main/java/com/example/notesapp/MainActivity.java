@@ -35,6 +35,22 @@ public class MainActivity extends AppCompatActivity {
         listViewNotes.setAdapter(adapter);
     }
 
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        setContentView(R.layout.activity_main);
+
+        // ListView rodo užrašus
+        ListView listViewNotes = findViewById(R.id.listViewNotes);
+        notesList = new ArrayList<>();
+
+        loadNotes(); // Įkeliamas notes.txt turinys į sąrašą
+
+        // Adapteris užrašų rodymui
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, notesList);
+        listViewNotes.setAdapter(adapter);
+    }
+
     private void loadNotes() {
         try {
             FileInputStream fis = openFileInput("notes.txt");
